@@ -1,4 +1,4 @@
-let myButtonsLogin = document.getElementsByTagName("button");
+let myButtonsLogin = $("button");//document.getElementsByTagName("button");
 
 // Primero defino una funcion
 function myButtonClicked(parametro) {
@@ -16,8 +16,10 @@ function myButtonMouseMove() {
 
 // Asigne a todos los botones la misma funcion
 for (const button of myButtonsLogin) {
-    button.addEventListener("click", myButtonClicked);
-    button.addEventListener("mousemove", myButtonMouseMove);
+    $(button).on("click", myButtonClicked);
+    $(button).on("mousemove", myButtonMouseMove);
+    //button.addEventListener("click", myButtonClicked);
+    //button.addEventListener("mousemove", myButtonMouseMove);
 }
 
 
