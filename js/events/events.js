@@ -16,7 +16,7 @@ function myButtonMouseMove() {
 
 // Asigne a todos los botones la misma funcion
 for (const button of myButtonsLogin) {
-    $(button).on("click", myButtonClicked);
+    $(button).click(myButtonClicked);
     $(button).on("mousemove", myButtonMouseMove);
     //button.addEventListener("click", myButtonClicked);
     //button.addEventListener("mousemove", myButtonMouseMove);
@@ -53,14 +53,16 @@ let mySupportChat = $("#supportChat");
 
 // Proxima clase vemos eventos con jQuery
 //myForm.addEventListener("submit", sendChatText);
-
+myForm.submit(sendChatText);
 
 function sendChatText(evento){
+    // Como se que es un evento submit... prevengo/evito el comportamiento default
+    // Que es volver a cargar la pagina
     evento.preventDefault();
     console.dir(mySupportInput);
-    console.log("Enviando" + mySupportInput.value);
-    mySupportChat.innerText = mySupportChat.innerText + mySupportInput.value
-    mySupportInput.value = "";
+    console.log("Enviando" + mySupportInput.val());
+    mySupportChat.text(mySupportChat.text() + mySupportInput.val())
+    mySupportInput.val("");
 
     //recorro todos los childen del evento.target
     let formulario = evento.target;
@@ -70,5 +72,12 @@ function sendChatText(evento){
 
 
 }
+
+$(document).ready(() => {
+    $(".btnProducto").click((e)=>{
+        console.log(e.target);
+    });
+});
+
 
 export default {}
